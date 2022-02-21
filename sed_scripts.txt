@@ -1,0 +1,125 @@
+echo "This is a sentence" | sed 's/sentence/paragraph/'
+This is paragraph
+
+cat sedFile.txt
+This is a good sentence.
+sed 's/good/bad/' sedFile.txt
+
+sed -e 's/good/bad/; s/sentence/paragraph/' sedFile.txt
+
+cat sedScript.sed
+s/good/bad/
+s/sentence/paragraph/
+sed -f sedScript.sed sedFile.txt
+
+cat sed_flags.txt
+By default, sed only works on the first iteration of the search criteria.
+Flags help us modify that when neccessary.
+
+Flag	| Description
+-----------------------------------------------------------
+# (number)	substitute every # occurance per line
+
+9		sed should substitute EVERY occurance
+p		PRINT, typically used in conjuction with -n(don't print)
+
+w file 		Write to a separate output file
+
+cat ttls.txt
+1. Twinkle Twinkle little star
+2. How I wonder what you are
+3. Up above the world so high
+4. like a diamond in the sky.
+5. Twinkle Twinkle little star
+6. How i wonder what you are
+
+sed '/s/w/v/2' ttls.txt
+
+sed 's/w/v/g' ttls.txt
+cat sedFile2.txt
+This is the first sentence
+This is another sentence
+This is yet another sentence
+
+sed -n  's/first/beginning/; s/another/a boring/p' sedFile2.txt
+
+
+sed 's/first/beginning/w testout.txt' sedFile2.txt
+
+
+sed 's/\/bin\/bash/\/bin\/zsh/' /etc/passwd
+or
+sed 's!/bin/bash!/bin/zsh!' /etc/passwd
+
+sed '2s/what/WHO/' ttls.txt
+
+sed '2,3s/w/v/' ttls.txtSS
+
+sed '3,$s/w/v/' ttls.txt ##line number 3 to end of the file replace w with v for every first occurance in every line.
+
+sed '/world/s/w/v/' ttls.txt
+
+sed '2{s/wonder/PONDER/;s/what/WHO/}' ttls.txt
+
+sed 'd' ttls.txt
+
+sed '4d' ttls.txt
+
+sed '3,4d' ttls.txt
+
+sed '3,$d' ttls.txt
+
+sed '/world/d' ttls.txt
+
+
+insert
+
+sed 'i\This is inserted text' ttls.txt   ## insert before every line
+
+sed '1i\Classic Children Story' ttls.txt
+
+sed '4i\
+This is my first insert\
+This is my second insert' ttls.txt
+
+sed 'a\This is appended text' ttls.txt  ## Insert after every line.
+
+
+sed '/diamond/a\This is appended text" ttls.txt
+
+sed '4c\This line has been censored!' ttls.txt
+
+cat sed_transform.txt
+a b c d e
+a b c d e
+a b c d e
+a b c d e
+a b c d e
+
+sed 'y/abc/xyz/' sed_transform.txt
+sed 'y/abc/zyx/' sed_transform.txt
+
+sed 'y/abcd/xyz/' sed_transform.txt ## error it should match
+
+sed -n 'diamond/p' ttls.txt
+
+sed -n '3,4p' ttls.txt
+
+sed '=' longfile.txt  ## adds line number to the each line.
+
+sed -n '/unlocked/{=;p}' longfile.txt
+
+cat extra.txt
+This document approved for public usage.
+
+sed '3r extra.txt' ttls.txt
+
+
+
+
+
+
+
+
+
+
