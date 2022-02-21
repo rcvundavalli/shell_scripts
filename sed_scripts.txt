@@ -115,10 +115,15 @@ This document approved for public usage.
 sed '3r extra.txt' ttls.txt
 
 
+sed -i 's/^/#/' ttls.txt  ## comment all lines with #
 
+sed -i 's/.\{1\}//' - remove the 1st 10 characters from each line in each found file ( -i option allows to modify the file in-place)
 
-
-
+echo "     This is a test" | sed -e 's/^[ \t]*//'   ###To remove all whitespace (including tabs) from left to first word
+Where,
+s/ : Substitute command ~ replacement for pattern (^[ \t]*) on each addressed line
+^[ \t]* : Search pattern ( ^ – start of the line; [ \t]* match one or more blank spaces including tab)
+// : Replace (delete) all matched pattern
 
 
 
