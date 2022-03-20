@@ -1,0 +1,32 @@
+I have a log file that contains 4 different type of exception :
+1- Exception
+2- Fatal
+3- Error
+4- Exec
+My requirement is to find count of each type of exception..
+$ cat -n starting.out
+     1    this is line # 1
+     2    this is Exception line
+     3    this is line # 3
+     4    this is Fatal line
+     5    this is line # 5
+     6    this is Error line
+     7    this is Exec line
+     8    this is line # 8
+     9    this is Error line and Exception line
+    10    this is line # 10
+    11    this is Exception line
+$ perl -lne '$h{$1}++ while(/(Exception|Fatal|Error|Exec)/g)}{print "$v $k" while(($k,$v)=each %h)' starting.out
+1 Exec
+2 Error
+3 Exception
+1 Fatal
+
+grep -o -e 'Exec' -e 'Fatal' -e 'Exception' starting.out | sort | uniq -c | sort
+##Python Version
+file = open("ttls.txt", "r")
+data = file.read()
+wonder = data.count("wonder")
+twinkle = data.count("Twinkle")
+print("wonder : {}, Twinkle: {}".format(wonder,twinkle))
+file.close()
