@@ -1,0 +1,53 @@
+cat > employee.txt <<EOF
+ajay manager account 45000
+sunil clerk account 25000
+varun manager sales 50000
+amit manager account 47000
+tarun peon sales 15000
+deepak clerk sales 23000
+sunil peon sales 13000
+satvik director purchase 80000 
+EOF
+
+FS (field separator): By default, this is any whitespace (spaces or tabs)
+RS (record separator): By default, a newline (\n)
+NF (number of fields): When awk parses a line, this variable is set to the number of fields that have been parsed
+$0: The current record
+$1, $2, $3, etc.: The first, second, third, etc. field from the current record
+NR (number of records): The number of records that have been parsed so far by the awk script
+
+awk '{print}' employee.txt
+
+awk '/manager/ {print}' employee.txt 
+
+awk '{print $1,$4}' employee.txt
+
+awk '{print NR,$0}' employee.txt ## NR displays line number and $0 is the entire line
+
+awk '{print $1,$NF}' employee.txt  ## Use of NF built-in variables (Display Last Field) 
+
+awk 'NR==3, NR==6 {print NR,$0}' employee.txt  ##Another use of NR built-in variables (Display Line From 3 to 6)  
+
+awk '{print length($0) }' employee.txt  ##length of each line
+
+ awk '{ if (length($0) > max) max = length($0) } END { print max }' employee.txt   ##To find the length of the longest line present in the file
+ 
+ awk 'END { print NR }' employee.txt  ## To find number of lines in a file
+ 
+  awk 'length($0) > 25' employee.txt  ## TPrinting lines with more than 25 characters
+  
+  awk '{ if($3 == "account") print $0;}' employee.txt ##To find/check for any string in any specific column
+  
+  ##To print the squares of first numbers from 1 to n say 6:  
+  
+  awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }'  
+  
+  
+  awk -F":" '{print $1 }' /etc/passwd  ##$1 is the first field in the current record. The -F option sets the FS variable to the character :
+  
+  awk 'BEGIN { FS=":" } {print $1 }' /etc/passwd   ##The field separator can also be set in a BEGIN function block
+  ##every user whose shell is not /sbin/nologin can be printed by preceding the block with a pattern match:
+  awk 'BEGIN { FS=":" } ! /\/sbin\/nologin/ {print $1 }' /etc/passwd
+  
+  
+  
