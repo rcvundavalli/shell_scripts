@@ -10,4 +10,13 @@ cat file1.txt
 echo "The best website is https://google.com/images" | sed 's_google.com/home_udemy.com_'
 printf line1\\nline2\\n
 printf line1\\nline2\\n | sed '1d'
-history
++++++++++++++++++++++++
+sudo apt-get install pssh
+
+hosts.txt
+ipaddress1
+ipaddress2
+ipaddress3
+ipaddress4
+pssh -h hosts.txt -A -i "hostname"
+
