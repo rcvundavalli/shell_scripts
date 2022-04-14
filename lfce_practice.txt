@@ -1,0 +1,13 @@
+echo "This is file1" > file1.txt
+echo "This is file2" > file2.txt
+echo "file2 has lot of content" >> file2.txt
+ls -lrt
+diff -u file1.txt file2.txt
+diff -u file1.txt file2.txt > patchfile
+patch -p0 < patchfile
+ls -lrt
+cat file1.txt
+echo "The best website is https://google.com/images" | sed 's_google.com/home_udemy.com_'
+printf line1\\nline2\\n
+printf line1\\nline2\\n | sed '1d'
+history
