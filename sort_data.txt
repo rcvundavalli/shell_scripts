@@ -1,0 +1,7 @@
+localhost:~# sort -t"," -k2 -rn ages.txt
+krish,34
+james,23
+ravi,12
+sam,6
+romeo,5
+siva,3
