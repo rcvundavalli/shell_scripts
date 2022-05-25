@@ -1,5 +1,5 @@
 echo "This is a sentence" | sed 's/sentence/paragraph/'
-This is paragraph
+This is a paragraph
 
 cat sedFile.txt
 This is a good sentence.
@@ -108,19 +108,18 @@ sed '/diamond/a\This is appended text" ttls.txt
 
 sed '4c\This line has been censored!' ttls.txt
 
-cat sed_transform.txt
+cat sed_transform.txt 
 a b c d e
 a b c d e
 a b c d e
 a b c d e
 a b c d e
 
-sed 'y/abc/xyz/' sed_transform.txt
-sed 'y/abc/zyx/' sed_transform.txt
+sed 'y/abc/yzx/' sed_transform.txt  ## It transforms each and every matched charecter in the file. but it expression should match number of charecter. Ex: abc=zyx
 
 sed 'y/abcd/xyz/' sed_transform.txt ## error it should match
 
-sed -n 'diamond/p' ttls.txt
+sed -n '/diamond/p' ttls.txt
 
 sed -n '3,4p' ttls.txt
 
