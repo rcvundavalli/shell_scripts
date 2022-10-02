@@ -33,7 +33,7 @@ cat ttls.txt
 5. Twinkle Twinkle little star
 6. How i wonder what you are
 
-sed '/s/w/v/2' ttls.txt  ## Change 2nd occurence of each line in ttls.txt file
+sed 's/w/v/2' ttls.txt  ## Change 2nd occurence of each line in ttls.txt file
 
 sed 's/w/v/g' ttls.txt   ## replace all w with v in ttls.txt file
 cat sedFile2.txt
